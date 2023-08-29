@@ -1,3 +1,7 @@
+let runningTotal = 0;
+let currentNumber = 0;
+let operator;
+
 const add = (number1, number2) => {
     return number1 + number2
 }
@@ -15,36 +19,44 @@ const divide = (number1, number2) => {
 }
 
 const operate = (operator, number1, number2) => {
+    let value = 0;
+
     switch (operator) {
         case '+':
-            return add(number1, number2);
+            value = add(number1, number2);
+            break;
         case '-':
-            return subtract(number1, number2);
+            value = subtract(number1, number2);
+            break;
         case '*':
-            return multiply(number1, number2);
+            value = multiply(number1, number2);
+            break;
         case '/':
-            return divide(number1, number2);
+            value = divide(number1, number2);
+            break;
     }
+
+    return value;
 }
 
 const clearCalculator = () => {
-    display.textContent = '0';
+    display.textContent = 0;
+    runningTotal = 0;
+    currentNumber = 0;
+    operator = null;
 }
 
 const enterNumber = number => {
-    if (display.textContent === '0') {
-        display.textContent = ''
-    }
     if (display.textContent.length < 9) {
-        display.textContent += number;
+        currentNumber += number;
+        display.textContent = Number(currentNumber);
     } else {
         return;
     }
-
 }
 
 const display = document.querySelector('#display');
-display.textContent = '0';
+display.textContent = runningTotal;
 
 const numberButtons = document.querySelectorAll('.calculator-number');
 const operatorButtons = document.querySelectorAll('.calculator-operator');
@@ -62,6 +74,14 @@ numberButtons.forEach(button => {
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', event => {
-        console.log(event.target.innerText);
+        if (operator) {
+            runningTotal = operate(operator, Number(runningTotal), Number(currentNumber));
+            display.textContent = runningTotal;
+        } else {
+            runningTotal = Number(currentNumber);
+        }
+        operator = event.target.innerText;
+
+        currentNumber = '';
     })
 })
