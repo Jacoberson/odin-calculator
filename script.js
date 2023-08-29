@@ -26,3 +26,12 @@ const operate = (operator, number1, number2) => {
             return divide(number1, number2);
     }
 }
+
+const display = document.querySelector('#display');
+const buttons = document.querySelectorAll('.calculator-button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', event => {
+        display.textContent += event.target.innerText;
+    })
+})
