@@ -28,9 +28,9 @@ const operate = (operator, number1, number2) => {
 }
 
 const display = document.querySelector('#display');
-const buttons = document.querySelectorAll('.calculator-button');
+const numberButtons = document.querySelectorAll('.calculator-number');
 
-buttons.forEach(button => {
+numberButtons.forEach(button => {
     button.addEventListener('click', event => {
         display.textContent += event.target.innerText;
     })
