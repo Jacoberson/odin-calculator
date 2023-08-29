@@ -47,6 +47,7 @@ const display = document.querySelector('#display');
 display.textContent = '0';
 
 const numberButtons = document.querySelectorAll('.calculator-number');
+const operatorButtons = document.querySelectorAll('.calculator-operator');
 const clearButton = document.querySelector('#clear');
 
 clearButton.addEventListener('click', () => {
@@ -56,5 +57,11 @@ clearButton.addEventListener('click', () => {
 numberButtons.forEach(button => {
     button.addEventListener('click', event => {
         enterNumber(event.target.id);
+    })
+})
+
+operatorButtons.forEach(button => {
+    button.addEventListener('click', event => {
+        console.log(event.target.innerText);
     })
 })
