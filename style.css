@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid red;
+}
+
+#display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    font-size: 24px;
+}
+
+#calculator-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid pink;
+    gap: 20px;
+    padding: 20px;
+}
+
+#top,
+#top-middle,
+#bottom-middle,
+#bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.calculator-button {
+    padding: 20px;
+}
