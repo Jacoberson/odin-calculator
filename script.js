@@ -27,11 +27,30 @@ const operate = (operator, number1, number2) => {
     }
 }
 
+const clearCalculator = () => {
+    display.textContent = '0';
+}
+
+const enterNumber = number => {
+    if (display.textContent === '0') {
+        display.textContent = ''
+    };
+
+    display.textContent += number;
+}
+
 const display = document.querySelector('#display');
+display.textContent = '0';
+
 const numberButtons = document.querySelectorAll('.calculator-number');
+const clearButton = document.querySelector('#clear');
+
+clearButton.addEventListener('click', () => {
+    clearCalculator();
+})
 
 numberButtons.forEach(button => {
     button.addEventListener('click', event => {
-        display.textContent += event.target.innerText;
+        enterNumber(event.target.innerText);
     })
 })
