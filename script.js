@@ -34,9 +34,13 @@ const clearCalculator = () => {
 const enterNumber = number => {
     if (display.textContent === '0') {
         display.textContent = ''
-    };
+    }
+    if (display.textContent.length < 9) {
+        display.textContent += number;
+    } else {
+        return;
+    }
 
-    display.textContent += number;
 }
 
 const display = document.querySelector('#display');
@@ -51,6 +55,6 @@ clearButton.addEventListener('click', () => {
 
 numberButtons.forEach(button => {
     button.addEventListener('click', event => {
-        enterNumber(event.target.innerText);
+        enterNumber(event.target.id);
     })
 })
