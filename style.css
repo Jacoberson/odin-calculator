@@ -40,6 +40,22 @@ body {
     gap: 20px;
 }
 
+#bottom {
+    flex-wrap: wrap;
+    max-width: 275px;
+
+}
+
+.zero, #clear, #equals {
+    width: 125px;
+}
+
 .calculator-button {
     padding: 20px;
+}
+
+#clear-container {
+    display: flex;
+    justify-content: space-between;
+    width: 265px;
 }
