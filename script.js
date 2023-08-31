@@ -1,6 +1,7 @@
 let runningTotal = 0;
 let currentNumber = 0;
-let operator;
+let previousOperator = '=';
+let currentOperator;
 
 const add = (number1, number2) => {
     return number1 + number2
@@ -43,7 +44,8 @@ const clearCalculator = () => {
     display.textContent = 0;
     runningTotal = 0;
     currentNumber = 0;
-    operator = null;
+    currentOperator = null;
+    previousOperator = '=';
 }
 
 const enterNumber = number => {
@@ -74,16 +76,23 @@ numberButtons.forEach(button => {
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', event => {
-        if (operator && operator !== '=') {
-            runningTotal = operate(operator, Number(runningTotal), Number(currentNumber));
-            display.textContent = runningTotal;
+        if (currentOperator) {
+            if (currentOperator !== '=') {
+                runningTotal = operate(currentOperator, Number(runningTotal), Number(currentNumber));
+                display.textContent = runningTotal;
+                previousOperator = currentOperator;
+            } else if (currentOperator === '=') {
+                runningTotal = operate(previousOperator, Number(runningTotal), Number(currentNumber));
+                display.textContent = runningTotal;
+            }
         } else {
             runningTotal = Number(currentNumber);
         }
-        operator = event.target.innerText;
+        currentOperator = event.target.innerText;
 
-        if (operator !== '=') {
+        if (currentOperator !== '=') {
             currentNumber = '';
         }
+
     })
 })
