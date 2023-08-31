@@ -63,6 +63,13 @@ display.textContent = runningTotal;
 const numberButtons = document.querySelectorAll('.calculator-number');
 const operatorButtons = document.querySelectorAll('.calculator-operator');
 const clearButton = document.querySelector('#clear');
+const decimalButton = document.querySelector('#decimal');
+
+decimalButton.addEventListener('click', event => {
+    if (!currentNumber.toString().includes('.')) {
+        enterNumber(event.target.innerText);
+    }
+})
 
 clearButton.addEventListener('click', () => {
     clearCalculator();
