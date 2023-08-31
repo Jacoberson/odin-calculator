@@ -74,7 +74,7 @@ numberButtons.forEach(button => {
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', event => {
-        if (operator) {
+        if (operator && operator !== '=') {
             runningTotal = operate(operator, Number(runningTotal), Number(currentNumber));
             display.textContent = runningTotal;
         } else {
@@ -82,6 +82,8 @@ operatorButtons.forEach(button => {
         }
         operator = event.target.innerText;
 
-        currentNumber = '';
+        if (operator !== '=') {
+            currentNumber = '';
+        }
     })
 })
