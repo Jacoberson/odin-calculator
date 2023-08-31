@@ -86,12 +86,11 @@ operatorButtons.forEach(button => {
         if (currentOperator) {
             if (currentOperator !== '=') {
                 runningTotal = operate(currentOperator, Number(runningTotal), Number(currentNumber));
-                display.textContent = runningTotal;
                 previousOperator = currentOperator;
             } else if (currentOperator === '=') {
                 runningTotal = operate(previousOperator, Number(runningTotal), Number(currentNumber));
-                display.textContent = runningTotal;
             }
+            display.textContent = runningTotal;
         } else {
             runningTotal = Number(currentNumber);
         }
